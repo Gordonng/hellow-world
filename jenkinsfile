@@ -6,6 +6,7 @@ pipeline {
    }
    stages {
        stage('Build') {
+sh 'echo 123'
            agent {
                docker {
                    image 'golang'
