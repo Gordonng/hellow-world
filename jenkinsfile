@@ -1,7 +1,7 @@
 pipeline {
    agent any
    environment {
-       registry = "Gordonng/hellow-world"
+       registry = "gordonng/hellow-world"
        GOCACHE = "/tmp"
    }
    stages {
