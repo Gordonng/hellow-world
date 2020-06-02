@@ -8,4 +8,3 @@ FROM scratch
 WORKDIR /app
 COPY --from=build-env /go/src/app/app .
 ENTRYPOINT [ "./app" ]
-
