@@ -37,7 +37,6 @@ pipeline {
                sh 'go clean -cache'
                // Run Unit Tests.
                //sh 'go test ./... -v -short'
-               sh 'go test'
            }
        }
        stage('Publish') {
