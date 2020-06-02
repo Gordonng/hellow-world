@@ -6,7 +6,6 @@ pipeline {
    }
    stages {
        stage('Build') {
-sh 'echo 123'
            agent {
                docker {
                    image 'golang'
@@ -14,7 +13,7 @@ sh 'echo 123'
            }
            steps {
                // Create our project directory.
-	       sh 'echo ${GOPATH} -- 1 --'
+	       sh '-- 1 --'
                sh 'cd ${GOPATH}/src'
                sh 'mkdir -p ${GOPATH}/src/hello-world'
                // Copy all files in our Jenkins workspace to our project directory.
