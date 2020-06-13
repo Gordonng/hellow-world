@@ -48,22 +48,8 @@ pipeline {
                script {
                    //def appimage = docker.build registry + ":$BUILD_NUMBER"
                    appimage = docker.build image01 + ":$BUILD_NUMBER"
-                   }
-               }
-           }
-       }
-       stage('Docker-Registry') {
-           environment {
-               image01 = 'hello-world'
-               registry = 'ggg222999/hello-world'
-               registryCredential = 'dockerhub'
-           }
-           steps{
-               script {
-		   appimage = docker.build registry + ":$BUILD_NUMBER"
                    docker.withRegistry( '', registryCredential ) {
                        appimage.push()
-                       //appimage.push('latest')
                    }
                }
            }
