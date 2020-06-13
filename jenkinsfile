@@ -40,7 +40,7 @@ pipeline {
        }
        stage('Publish') {
            environment {
-	       image01 = hello-world		
+	       image01 = 'hello-world'		
 	       registry = 'ggg222999/hello-world'
                registryCredential = 'dockerhub'
            }
