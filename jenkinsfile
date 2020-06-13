@@ -51,8 +51,9 @@ pipeline {
                    //appimage = docker.build image01 + ":$BUILD_NUMBER"
                    docker.withRegistry( '', registryCredential ) {
                        appimage.push()
-                       appimage.push(latest)
+                       //appimage.push(latest)
                    }
+		   sh "docker images | grep hello-world"
                }
            }
        }
