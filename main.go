@@ -1,20 +1,20 @@
-package main
-
+ckage main
 import (
-   "log"
-   "net/http"
+    "fmt"
+    "net/http"
 )
-
-type Server struct{}
-
-func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-   w.WriteHeader(http.StatusOK)
-   w.Header().Set("Content-Type", "application/json")
-   w.Write([]byte(`{"message": "hello world"}`))
+func hello(w http.ResponseWriter, req *http.Request) {
+    fmt.Fprintf(w, "hello\n")
 }
-
+func headers(w http.ResponseWriter, req *http.Request) {
+    for name, headers := range req.Header {
+        for _, h := range headers {
+            fmt.Fprintf(w, "%v: %v\n", name, h)
+        }
+    }
+}
 func main() {
-   s := &Server{}
-   http.Handle("/", s)
-   log.Fatal(http.ListenAndServe(":8080", nil))
+    http.HandleFunc("/hello", hello)
+    http.HandleFunc("/headers", headers)
+    http.ListenAndServe(":8090", nil)
 }
