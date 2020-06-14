@@ -1,9 +1,8 @@
 - hosts: localhost
-  become: yes
-  vars:
-    jenkins_hostname: 192.168.1.60
-    docker_users:
-    - jenkins
-  roles:
-    - role: geerlingguy.jenkins
-    - role: geerlingguy.docker
+  tasks:
+  - name: Create a k8s namespace
+    k8s:
+      name: testing
+      api_version: v1
+      kind: Namespace
+      state: present

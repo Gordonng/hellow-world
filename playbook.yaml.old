@@ -1,0 +1,13 @@
+- hosts: localhost
+  become: yes
+  vars:
+    jenkins_hostname: 192.168.1.60
+    docker_users:
+    - jenkins
+  tasks:
+  - name: Deploy the service
+    command: echo "123"
+    register: result
+  - name: print stdout
+    debug:
+      msg: "{{ result.stdout }}"
