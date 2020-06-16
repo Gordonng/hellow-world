@@ -1,0 +1,15 @@
+# provision.yml
+ 
+- name: debug docker host
+  hosts: jenkins
+  tasks:
+  - name: debug infrastructure
+    # access container data : print the state
+    debug: var=hostvars["builder"]["docker_state"]
+ 
+# you can target individual containers by name
+- name: configure the container
+  hosts: jenkins
+  tasks:
+  - name: run dummy command
+    command: /bin/echo hello world
